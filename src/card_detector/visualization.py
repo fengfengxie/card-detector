@@ -27,15 +27,17 @@ def generate_debug_images(
     resized, scale_factor = _resize_keep_aspect(image, config.max_side)
     gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (config.blur_kernel, config.blur_kernel), 0)
-    edges = cv2.Canny(blur, config.canny_low, config.canny_high)
-    edges = cv2.dilate(edges, None, iterations=1)
-    edges = cv2.erode(edges, None, iterations=1)
+    edges_canny = cv2.Canny(blur, config.canny_low, config.canny_high)
+    edges_dilate = cv2.dilate(edges_canny, None, iterations=1)
+    edges = cv2.erode(edges_dilate, None, iterations=1)
 
     outputs = {
         "01_resized": resized,
         "02_gray": gray,
         "03_blur": blur,
-        "04_edges": edges,
+        "05_edges_canny": edges_canny,
+        "06_edges_dilate": edges_dilate,
+        "07_edges": edges,
     }
 
     result = detect_card(image, config=config)
