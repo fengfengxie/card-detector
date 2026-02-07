@@ -6,6 +6,7 @@
 - [x] Contour filtering by area, aspect ratio, and rectangularity
 - [x] Output bbox and basic confidence score
 - [x] CLI output JSON and annotated image
+- [x] Debug visualization images for intermediate steps
 
 ## Phase 2: Accuracy & Robustness
 - [ ] Perspective correction and refined four-point fitting

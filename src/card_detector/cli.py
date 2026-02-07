@@ -8,6 +8,7 @@ from pathlib import Path
 import cv2
 
 from .detector import DetectorConfig, detect_card, draw_detection
+from .visualization import generate_debug_images
 
 
 def _parse_args() -> argparse.Namespace:
@@ -15,6 +16,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--image", required=True, help="Path to input image")
     parser.add_argument("--output-json", help="Path to save JSON result")
     parser.add_argument("--output-image", help="Path to save annotated image")
+    parser.add_argument("--debug-dir", help="Directory to save debug images")
     parser.add_argument("--max-side", type=int, default=1200, help="Max side length for processing")
     parser.add_argument("--canny-low", type=int, default=50, help="Canny low threshold")
     parser.add_argument("--canny-high", type=int, default=150, help="Canny high threshold")
@@ -59,6 +61,10 @@ def main() -> int:
         output_path = Path(args.output_image)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         cv2.imwrite(str(output_path), output_image)
+
+    if args.debug_dir:
+        debug_dir = Path(args.debug_dir)
+        generate_debug_images(image, config=config, output_dir=debug_dir)
 
     return 0
 
