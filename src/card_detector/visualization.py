@@ -35,15 +35,15 @@ def generate_debug_images(
         "01_resized": resized,
         "02_gray": gray,
         "03_blur": blur,
-        "05_edges_canny": edges_canny,
-        "06_edges_dilate": edges_dilate,
-        "07_edges": edges,
+        "04_edges_canny": edges_canny,
+        "05_edges_dilate": edges_dilate,
+        "06_edges": edges,
     }
 
     result = detect_card(image, config=config)
     if result is not None:
         annotated = draw_detection(image, result)
-        outputs["05_detection"] = annotated
+        outputs["07_detection"] = annotated
 
     paths: Dict[str, str] = {}
     for name, data in outputs.items():
