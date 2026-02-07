@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VENV_DIR="${ROOT_DIR}/.venv"
-IMAGE_PATH="${ROOT_DIR}/input/test.jpg"
+IMAGE_PATH="${ROOT_DIR}/input/11.jpg"
 OUTPUT_DIR="${ROOT_DIR}/output"
 
 if [[ ! -d "${VENV_DIR}" ]]; then

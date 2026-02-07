@@ -14,9 +14,10 @@
 - [ ] Confidence scoring based on geometric consistency and edge clarity
 
 ## Phase 3: Calibration & Evaluation
-- [x] Pixel-to-mm scale calculation using ISO/IEC 7810 ID-1 dimensions
+- [ ] Pixel-to-mm scale calculation using ISO/IEC 7810 ID-1 dimensions
 - [ ] Evaluation script and error statistics
 - [ ] Test report generation
 
 ## Notes
 - Current detector targets single-card, simple-background images.
+- README updated with usage, CLI options, and output format.
