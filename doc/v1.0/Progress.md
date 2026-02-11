@@ -21,3 +21,4 @@
 ## Notes
 - Current detector targets single-card, simple-background images.
 - README updated with usage, CLI options, and output format.
+- `script/test.sh` now accepts an optional image path parameter for test runs.

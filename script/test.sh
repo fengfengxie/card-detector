@@ -3,8 +3,28 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VENV_DIR="${ROOT_DIR}/.venv"
-IMAGE_PATH="${ROOT_DIR}/input/11.jpg"
+DEFAULT_IMAGE_PATH="${ROOT_DIR}/input/11.jpg"
 OUTPUT_DIR="${ROOT_DIR}/output"
+
+if [[ $# -gt 1 ]]; then
+  echo "Usage: $0 [image-path]"
+  exit 1
+fi
+
+if [[ $# -eq 1 ]]; then
+  if [[ "$1" = /* ]]; then
+    IMAGE_PATH="$1"
+  else
+    IMAGE_PATH="${ROOT_DIR}/$1"
+  fi
+else
+  IMAGE_PATH="${DEFAULT_IMAGE_PATH}"
+fi
+
+if [[ ! -f "${IMAGE_PATH}" ]]; then
+  echo "Image not found: ${IMAGE_PATH}"
+  exit 1
+fi
 
 if [[ ! -d "${VENV_DIR}" ]]; then
   python3 -m venv "${VENV_DIR}"
